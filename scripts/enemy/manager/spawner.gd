@@ -1,7 +1,7 @@
 class_name EnemyManagerSpawner
 extends Node
 
-@export_range(1, 32) var num_slices := 8
+@export_range(1, 32) var num_slices := 16
 
 class TimeSliceSignal:
     var sig: Signal
@@ -34,18 +34,9 @@ func spawn_enemy(scene: PackedScene) -> void:
 
 
 func least_used_signal() -> Signal:
-    var min_index := -1
-    var min_listeners := Vector2i.MAX.x
-
-    for i in slices.size():
-        var num_listeners := slices[i].sig.get_connections().size()
-        if num_listeners < min_listeners:
-            min_index = i
-            min_listeners = num_listeners
-
-    prints("enemy got signal %d" % [min_index])
-    return slices[min_index].sig
-
+    var slice_index := Engine.get_physics_frames() % num_slices
+    var slice: TimeSliceSignal = slices[slice_index]
+    return slice.sig
 
 func _physics_process(_delta: float) -> void:
     var slice_index := Engine.get_physics_frames() % num_slices

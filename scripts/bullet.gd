@@ -34,7 +34,6 @@ func timeout(secs: float) -> Bullet:
     return self
 
 func _ready() -> void:
-    print("bullet added")
     timer.start()
 
 func _on_timer_timeout() -> void:

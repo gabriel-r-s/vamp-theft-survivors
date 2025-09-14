@@ -47,8 +47,6 @@ func set_state(next_state: State) -> void:
         State.Shooting:
             bored_timer.start()
 
-    prints("state set to", State.find_key(next_state))
-
     state = next_state
 
 func move_toward_nav_target(delta: float) -> void:

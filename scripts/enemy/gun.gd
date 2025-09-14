@@ -19,15 +19,12 @@ func _ready() -> void:
     timer.wait_time = fire_interval
 
 func shoot() -> void:
-    prints("SHOOT CALLED", get_instance_id())
     var player_pos = enemy.player_pos
     if player_pos != null:
         var dir := enemy.global_position.direction_to(player_pos)
         var bullet: Bullet = bullet_scene.instantiate()
         bullet = bullet.dmg(dmg).dir(dir, speed).dont_collide_with_enemies()
         add_sibling(bullet)
-    else:
-        print("    BUT POS IS NULL")
 
 func _physics_process(_delta: float) -> void:
     if not is_shooting and enemy.state == Enemy.State.Shooting:
