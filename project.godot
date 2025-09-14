@@ -23,6 +23,14 @@ config/icon="res://icon.svg"
 2d_physics/layer_5="EnemyHit"
 2d_physics/layer_6="Bullet"
 
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=180
+window/size/mode=2
+window/stretch/mode="canvas_items"
+
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
