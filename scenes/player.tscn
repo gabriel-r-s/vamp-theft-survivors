@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyrhqj6fcopyo"]
+[gd_scene load_steps=4 format=3 uid="uid://h1nde6a6fvpg"]
 
 [ext_resource type="Texture2D" uid="uid://b0k8v2tca5hxt" path="res://icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dffoeh33g56im" path="res://scripts/player/player_controller.gd" id="1_g2els"]
@@ -6,6 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("rot_dir")]
+collision_layer = 11
 script = ExtResource("1_g2els")
 rot_dir = NodePath("Direction")
 
