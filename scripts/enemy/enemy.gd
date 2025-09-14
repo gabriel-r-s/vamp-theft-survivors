@@ -19,7 +19,7 @@ enum State {
 var manager: EnemyManager
 var state := State.Shooting
 var nav_target := Vector2.ZERO
-
+var player_pos = Vector2.ZERO
 
 func can_see_player() -> bool:
     return manager.navigation.point_can_see_player(self.global_position)
@@ -59,6 +59,7 @@ func move_toward_nav_target(delta: float) -> void:
 
 func update(delta: float) -> void:
     var next_state := state
+    player_pos = null
 
     match state:
         State.Manouvering:
@@ -75,6 +76,7 @@ func update(delta: float) -> void:
                 next_state = State.Shooting
 
         State.Shooting:
+            player_pos = manager.navigation.player_global_pos()
             if bored_timer.is_stopped():
                 next_state = State.Bored
             elif not can_see_player():

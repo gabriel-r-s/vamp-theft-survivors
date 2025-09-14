@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://b0k8v2tca5hxt" path="res://icon.svg" id="5_dhxpb"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8lahr"]
-vertices = PackedVector2Array(216.93, 84.6797, 650.953, 0.0234375, 650.039, 362.023, 0.148438, 362.969, 87.7188, 185.094, 50.9062, 137.719, 2.85156, 0.96875, 180.148, 37.2812)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(0, 2, 3), PackedInt32Array(4, 0, 3), PackedInt32Array(5, 4, 3), PackedInt32Array(5, 3, 6), PackedInt32Array(7, 5, 6), PackedInt32Array(7, 6, 1), PackedInt32Array(7, 1, 0)])
+vertices = PackedVector2Array(198.062, 90.6094, 650.953, 0.0234375, 650.039, 362.023, 126.992, 238.062, 0.148438, 362.969, 72.9531, 211.992, 2.85156, 0.96875, 144.008, 64.5703)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 0, 2), PackedInt32Array(3, 2, 4), PackedInt32Array(5, 3, 4), PackedInt32Array(5, 4, 6), PackedInt32Array(7, 5, 6), PackedInt32Array(7, 6, 1), PackedInt32Array(7, 1, 0)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-17, -19, 671, -20, 670, 382, -20, 383)])
 sample_partition_type = 1
 parsed_geometry_type = 1
@@ -23,7 +23,7 @@ manager = NodePath("EnemyManager")
 enemy_scene = ExtResource("2_8lahr")
 
 [node name="Player" parent="." instance=ExtResource("1_ebxje")]
-position = Vector2(216, 144)
+position = Vector2(468, 170)
 
 [node name="EnemyManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_o4lq1")]
 player = NodePath("../Player")
@@ -43,8 +43,8 @@ autostart = true
 navigation_polygon = SubResource("NavigationPolygon_8lahr")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D"]
-position = Vector2(93, 143)
-rotation = -0.660651
+position = Vector2(113, 198)
+rotation = -1.1217
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
