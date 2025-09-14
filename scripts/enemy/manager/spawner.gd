@@ -43,6 +43,7 @@ func least_used_signal() -> Signal:
             min_index = i
             min_listeners = num_listeners
 
+    prints("enemy got signal %d" % [min_index])
     return slices[min_index].sig
 
 

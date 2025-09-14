@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b0k8v2tca5hxt" path="res://icon.svg" id="5_dhxpb"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8lahr"]
-vertices = PackedVector2Array(227.93, 61.6797, 650.953, 0.0234375, 650.039, 362.023, 0.148438, 362.969, 98.7188, 162.094, 61.9062, 114.719, 2.85156, 0.96875, 191.148, 14.2812)
+vertices = PackedVector2Array(216.93, 84.6797, 650.953, 0.0234375, 650.039, 362.023, 0.148438, 362.969, 87.7188, 185.094, 50.9062, 137.719, 2.85156, 0.96875, 180.148, 37.2812)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(0, 2, 3), PackedInt32Array(4, 0, 3), PackedInt32Array(5, 4, 3), PackedInt32Array(5, 3, 6), PackedInt32Array(7, 5, 6), PackedInt32Array(7, 6, 1), PackedInt32Array(7, 1, 0)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-17, -19, 671, -20, 670, 382, -20, 383)])
 sample_partition_type = 1
@@ -43,8 +43,9 @@ autostart = true
 navigation_polygon = SubResource("NavigationPolygon_8lahr")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D"]
-position = Vector2(104, 120)
+position = Vector2(93, 143)
 rotation = -0.660651
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
 position = Vector2(51.8328, 1.52588e-05)

@@ -6,6 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig63i"]
 
 [node name="Enemy" type="RigidBody2D" node_paths=PackedStringArray("nav", "bored_timer", "unbored_timer")]
+collision_layer = 20
 can_sleep = false
 lock_rotation = true
 script = ExtResource("1_4a83h")
@@ -22,11 +23,13 @@ texture = ExtResource("2_a3pup")
 shape = SubResource("RectangleShape2D_ig63i")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 20.0
 
 [node name="BoredTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 3.0
 one_shot = true
 
 [node name="UnBoredTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
