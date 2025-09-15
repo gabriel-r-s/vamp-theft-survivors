@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds7827a7vmvx4"]
+
+[ext_resource type="Script" uid="uid://cy8k35gxqmn75" path="res://scripts/gui/stars.gd" id="1_mjefv"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("container")]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_mjefv")
+container = NodePath("HBoxContainer")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="Debug" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 283.0
+offset_top = 60.0
+offset_right = 323.0
+offset_bottom = 100.0
+
+[node name="Button" type="Button" parent="Debug"]
+layout_mode = 0
+offset_left = -146.0
+offset_top = 72.0
+offset_right = -103.0
+offset_bottom = 103.0
+text = "ADD"
+
+[node name="Button2" type="Button" parent="Debug"]
+layout_mode = 0
+offset_left = -72.0
+offset_top = 76.0
+offset_right = -29.0
+offset_bottom = 107.0
+text = "RM"
+
+[node name="Button3" type="Button" parent="Debug"]
+layout_mode = 0
+offset_left = -144.0
+offset_top = 117.0
+offset_right = -87.0
+offset_bottom = 148.0
+text = "FLASH"
+
+[node name="Button4" type="Button" parent="Debug"]
+layout_mode = 0
+offset_left = -53.0
+offset_top = 122.0
+offset_right = 38.0
+offset_bottom = 153.0
+text = "FLASH OFF"
+
+[connection signal="pressed" from="Debug/Button" to="." method="add_star"]
+[connection signal="pressed" from="Debug/Button2" to="." method="remove_star"]
+[connection signal="pressed" from="Debug/Button3" to="." method="start_flashing"]
+[connection signal="pressed" from="Debug/Button4" to="." method="stop_flashing"]
