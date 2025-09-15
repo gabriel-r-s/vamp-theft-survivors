@@ -26,12 +26,12 @@ func remove_star() -> void:
 func flash_on() -> void:
     flash_state = true
     for star: Label in stars:
-        star.text = FULL_STAR 
+        star.text = FULL_STAR
 
 func flash_off() -> void:
     flash_state = false
     for star: Label in stars:
-        star.text = OUTLINE_STAR 
+        star.text = OUTLINE_STAR
 
 func start_flashing() -> void:
     if flashing:
