@@ -11,5 +11,4 @@ extends Node
 
 func _on_spawn_timeout() -> void:
     var scene: PackedScene = scenes.pick_random()
-    assert(scene != null)
     manager.spawner.spawn_enemy(scene)
