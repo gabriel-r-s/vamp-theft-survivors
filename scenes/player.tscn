@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("rot_dir")]
-collision_layer = 11
+collision_layer = 10
 script = ExtResource("1_g2els")
 rot_dir = NodePath("Direction")
 player_bullet_scene = ExtResource("2_qhqgy")

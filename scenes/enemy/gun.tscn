@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2p6jjkkyx88n"]
 
 [ext_resource type="Script" uid="uid://gwmwjupoym67" path="res://scripts/enemy/gun.gd" id="1_4a772"]
-[ext_resource type="PackedScene" uid="uid://radjrghaqfr0" path="res://scenes/bullet.tscn" id="2_p5hya"]
+[ext_resource type="PackedScene" uid="uid://radjrghaqfr0" path="res://scenes/enemy/enemy_bullet.tscn" id="2_p5hya"]
 
 [node name="Gun" type="Node" node_paths=PackedStringArray("fire_timer", "burst_timer", "burst_recover_timer")]
 script = ExtResource("1_4a772")

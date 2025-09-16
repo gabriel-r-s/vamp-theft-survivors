@@ -17,18 +17,6 @@ func dmg(dmg_: float) -> Bullet:
 	self.damage = dmg_
 	return self
 
-func dont_collide_with(body: Node) -> Bullet:
-	self.add_collision_exception_with(body)
-	return self
-
-func dont_collide_with_enemies() -> Bullet:
-	set_collision_mask_value(5, false)
-	return self
-
-func dont_collide_with_player() -> Bullet:
-	set_collision_mask_value(4, false)
-	return self
-
 func timeout(secs: float) -> Bullet:
 	self.timer.wait_time = secs
 	return self
@@ -41,5 +29,5 @@ func _on_timer_timeout() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.has_method("get_hit"):
-		body.get_hit(self)
+		body.get_hit(self.dmg)
 	queue_free()

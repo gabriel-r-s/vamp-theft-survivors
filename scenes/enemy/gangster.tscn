@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://40alfoll3nx" path="res://scenes/enemy/enemy.tscn" id="1_m47f6"]
 
 [node name="Gangster" instance=ExtResource("1_m47f6")]
+health = 1.0
 bore_time = 2.0
 unbore_time = 5.0
 

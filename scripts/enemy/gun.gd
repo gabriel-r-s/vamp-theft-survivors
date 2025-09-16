@@ -30,7 +30,7 @@ func shoot() -> void:
     if player_pos != null:
         var dir := enemy.global_position.direction_to(player_pos)
         var bullet: Bullet = bullet_scene.instantiate()
-        bullet = bullet.dmg(dmg).dir(dir, speed).dont_collide_with_enemies()
+        bullet = bullet.dmg(dmg).dir(dir, speed)
         add_sibling(bullet)
 
 func _physics_process(_delta: float) -> void:

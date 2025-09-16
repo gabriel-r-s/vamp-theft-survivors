@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://radjrghaqfr0"]
 
-[ext_resource type="Script" uid="uid://bcqhlhmwdyo5k" path="res://scripts/bullet.gd" id="1_mkf8s"]
+[ext_resource type="Script" uid="uid://bcqhlhmwdyo5k" path="res://scripts/enemy/enemy_bullet.gd" id="1_mkf8s"]
 
 [sub_resource type="Gradient" id="Gradient_mkf8s"]
 colors = PackedColorArray(1, 0.839216, 0.0392157, 1, 1, 0.839216, 0.0392157, 1)
@@ -15,7 +15,7 @@ radius = 2.0
 
 [node name="Bullet" type="RigidBody2D" node_paths=PackedStringArray("timer")]
 collision_layer = 32
-collision_mask = 25
+collision_mask = 9
 can_sleep = false
 lock_rotation = true
 contact_monitor = true
