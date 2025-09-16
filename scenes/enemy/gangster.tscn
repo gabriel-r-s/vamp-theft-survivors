@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvgi24nuu6fo1"]
+
+[ext_resource type="PackedScene" uid="uid://40alfoll3nx" path="res://scenes/enemy/enemy.tscn" id="1_m47f6"]
+
+[node name="Gangster" instance=ExtResource("1_m47f6")]
+bore_time = 2.0
+unbore_time = 5.0
+
+[node name="Gun" parent="." index="0"]
+fire_interval = 1.5
+speed = 80.0
+burst_recover_time = 1.0
+
+[node name="Label" type="Label" parent="Sprite2D" index="0"]
+offset_left = -51.2
+offset_top = -51.2
+offset_right = 6.8
+offset_bottom = 58.8
+theme_override_font_sizes/font_size = 80
+text = "G"

@@ -1,9 +1,11 @@
 class_name Enemy
 extends RigidBody2D
 
-@export_group("Attrs")
+@export var health := 5.0
 @export var max_speed := 30.0
 @export var accel := 30.0
+@export var bore_time := 3.0
+@export var unbore_time := 3.0
 
 @export_group("Scene")
 @export var nav: NavigationAgent2D
@@ -24,9 +26,19 @@ var player_pos = Vector2.ZERO
 func can_see_player() -> bool:
     return manager.navigation.point_can_see_player(self.global_position)
 
+func distance_to_player() -> bool:
+    return manager.navigation.player_global_pos().distance_to(self.global_position)
+
+func get_hit(dmg: float) -> void:
+    health -= dmg
+    if health <= 0.0:
+        queue_free()
+
 func _ready() -> void:
     state = State.Bored
     set_state(State.Manouvering)
+    bored_timer.wait_time = bore_time
+    unbored_timer.wait_time = unbore_time
 
 func set_state(next_state: State) -> void:
     if state == next_state:

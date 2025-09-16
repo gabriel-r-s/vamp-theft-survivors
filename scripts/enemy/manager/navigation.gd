@@ -17,10 +17,11 @@ var points: Array[Vector2] = []
 
 func _ready() -> void:
     var parent := get_parent()
-    parent.ready.connect(func():
-        player = parent.player
-        find_player_timer.timeout.connect(find_player)
-    )
+    parent.ready.connect(_on_parent_ready.bind(parent))
+
+func _on_parent_ready(parent: Node) -> void:
+    player = parent.player
+    find_player_timer.timeout.connect(find_player)
 
 func player_global_pos() -> Vector2:
     return player.global_position

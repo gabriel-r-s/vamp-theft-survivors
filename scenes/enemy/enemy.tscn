@@ -15,6 +15,13 @@ nav = NodePath("NavigationAgent2D")
 bored_timer = NodePath("BoredTimer")
 unbored_timer = NodePath("UnBoredTimer")
 
+[node name="Gun" parent="." instance=ExtResource("3_40wdo")]
+fire_interval = 1.0
+dmg = 1.0
+speed = 150.0
+burst_max_time = 3.0
+burst_recover_time = 3.0
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.19209e-06, -5.96046e-07)
 scale = Vector2(0.15625, 0.15625)
@@ -34,5 +41,3 @@ one_shot = true
 [node name="UnBoredTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
-
-[node name="Gun" parent="." instance=ExtResource("3_40wdo")]

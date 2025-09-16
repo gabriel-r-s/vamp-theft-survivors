@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://psrvv5ppicds"]
+
+[ext_resource type="PackedScene" uid="uid://40alfoll3nx" path="res://scenes/enemy/enemy.tscn" id="1_q05ki"]
+
+[node name="Army" instance=ExtResource("1_q05ki")]
+health = 10.0
+max_speed = 20.0
+bore_time = 10.0
+
+[node name="Gun" parent="." index="0"]
+fire_interval = 0.13
+speed = 200.0
+burst_max_time = 1.5
+burst_recover_time = 2.0
+
+[node name="Label" type="Label" parent="Sprite2D" index="0"]
+offset_left = -51.2
+offset_top = -51.2
+offset_right = 6.8
+offset_bottom = 58.8
+theme_override_font_sizes/font_size = 80
+text = "A"

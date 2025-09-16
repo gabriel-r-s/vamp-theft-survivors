@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://b83mchmyix4g5"]
+[gd_scene load_steps=11 format=3 uid="uid://b83mchmyix4g5"]
 
 [ext_resource type="PackedScene" uid="uid://h1nde6a6fvpg" path="res://scenes/player.tscn" id="1_ebxje"]
 [ext_resource type="Script" uid="uid://b75luvjliyiha" path="res://scripts/enemy/debug.gd" id="1_o4lq1"]
-[ext_resource type="PackedScene" uid="uid://40alfoll3nx" path="res://scenes/enemy/enemy.tscn" id="2_8lahr"]
+[ext_resource type="PackedScene" uid="uid://dvgi24nuu6fo1" path="res://scenes/enemy/gangster.tscn" id="2_dhxpb"]
 [ext_resource type="PackedScene" uid="uid://cgfc1smtvblod" path="res://scenes/enemy/manager.tscn" id="2_o4lq1"]
+[ext_resource type="PackedScene" uid="uid://c2efikpmxs3a2" path="res://scenes/enemy/police.tscn" id="3_lxcmc"]
+[ext_resource type="PackedScene" uid="uid://byfvx6jix2s6e" path="res://scenes/enemy/swat.tscn" id="4_hyful"]
 [ext_resource type="Texture2D" uid="uid://b0k8v2tca5hxt" path="res://icon.svg" id="5_dhxpb"]
+[ext_resource type="PackedScene" uid="uid://psrvv5ppicds" path="res://scenes/enemy/army.tscn" id="5_f3i3a"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8lahr"]
 vertices = PackedVector2Array(198.062, 90.6094, 650.953, 0.0234375, 650.039, 362.023, 126.992, 238.062, 0.148438, 362.969, 72.9531, 211.992, 2.85156, 0.96875, 144.008, 64.5703)
@@ -20,7 +23,10 @@ size = Vector2(123.666, 20)
 [node name="EnemyDebug" type="Node" node_paths=PackedStringArray("manager")]
 script = ExtResource("1_o4lq1")
 manager = NodePath("EnemyManager")
-enemy_scene = ExtResource("2_8lahr")
+gangster_scene = ExtResource("2_dhxpb")
+police_scene = ExtResource("3_lxcmc")
+swat_scene = ExtResource("4_hyful")
+army_scene = ExtResource("5_f3i3a")
 
 [node name="Player" parent="." instance=ExtResource("1_ebxje")]
 position = Vector2(468, 170)
@@ -29,7 +35,6 @@ position = Vector2(468, 170)
 player = NodePath("../Player")
 
 [node name="DebugSpawn" type="Timer" parent="."]
-wait_time = 0.1
 
 [node name="DebugSpawnPre" type="Timer" parent="."]
 wait_time = 2.0
@@ -37,7 +42,7 @@ one_shot = true
 autostart = true
 
 [node name="DebugSpawnPost" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 10.0
 one_shot = true
 autostart = true
 
