@@ -3,12 +3,13 @@
 [ext_resource type="Script" uid="uid://gwmwjupoym67" path="res://scripts/enemy/gun.gd" id="1_4a772"]
 [ext_resource type="PackedScene" uid="uid://radjrghaqfr0" path="res://scenes/enemy/enemy_bullet.tscn" id="2_p5hya"]
 
-[node name="Gun" type="Node" node_paths=PackedStringArray("fire_timer", "burst_timer", "burst_recover_timer")]
+[node name="Gun" type="Node2D" node_paths=PackedStringArray("fire_timer", "burst_timer", "burst_recover_timer", "audio_stream_player")]
 script = ExtResource("1_4a772")
 fire_timer = NodePath("FireTimer")
 burst_timer = NodePath("BurstTimer")
 burst_recover_timer = NodePath("Recover")
 bullet_scene = ExtResource("2_p5hya")
+audio_stream_player = NodePath("AudioStreamPlayer2D")
 
 [node name="FireTimer" type="Timer" parent="."]
 process_callback = 0
@@ -18,5 +19,8 @@ one_shot = true
 
 [node name="Recover" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"Guns"
 
 [connection signal="timeout" from="FireTimer" to="." method="shoot"]

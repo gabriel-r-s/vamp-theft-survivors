@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://byfvx6jix2s6e"]
+[gd_scene load_steps=3 format=3 uid="uid://byfvx6jix2s6e"]
 
 [ext_resource type="PackedScene" uid="uid://40alfoll3nx" path="res://scenes/enemy/enemy.tscn" id="1_o4q5g"]
+[ext_resource type="AudioStream" uid="uid://dw3p6eoyo42kp" path="res://assets/sfx/guns/smg-burst.tres" id="2_lihbe"]
 
 [node name="Swat" instance=ExtResource("1_o4q5g")]
 health = 10.0
@@ -11,6 +12,8 @@ fire_interval = 0.04
 dmg = 0.5
 speed = 200.0
 burst_max_time = 0.5
+full_auto_audio = true
+sound = ExtResource("2_lihbe")
 
 [node name="Label" type="Label" parent="Sprite2D" index="0"]
 offset_left = -51.2

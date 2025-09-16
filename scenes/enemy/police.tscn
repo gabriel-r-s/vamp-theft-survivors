@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2efikpmxs3a2"]
+[gd_scene load_steps=3 format=3 uid="uid://c2efikpmxs3a2"]
 
 [ext_resource type="PackedScene" uid="uid://40alfoll3nx" path="res://scenes/enemy/enemy.tscn" id="1_p5o8i"]
+[ext_resource type="AudioStream" uid="uid://dn60i2idmjawx" path="res://assets/sfx/guns/pistol.tres" id="2_vgxg8"]
 
 [node name="Police" instance=ExtResource("1_p5o8i")]
 health = 10.0
@@ -11,6 +12,7 @@ fire_interval = 0.7
 dmg = 2.0
 burst_max_time = 5.0
 burst_recover_time = 2.0
+sound = ExtResource("2_vgxg8")
 
 [node name="Label" type="Label" parent="Sprite2D" index="0"]
 offset_left = -51.2

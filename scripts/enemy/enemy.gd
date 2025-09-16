@@ -11,6 +11,8 @@ extends RigidBody2D
 @export var nav: NavigationAgent2D
 @export var bored_timer: Timer
 @export var unbored_timer: Timer
+@export var grunt_audio_player: AudioStreamPlayer2D
+@export var death_audio_player: AudioStreamPlayer2D
 
 enum State {
     Manouvering,
@@ -32,7 +34,13 @@ func distance_to_player() -> bool:
 func get_hit(dmg: float) -> void:
     health -= dmg
     if health <= 0.0:
+        remove_child(death_audio_player)
+        add_sibling(death_audio_player)
+        death_audio_player.play()
+        death_audio_player.finished.connect(func(): death_audio_player.queue_free())
         queue_free()
+    else:
+        grunt_audio_player.play()
 
 func _ready() -> void:
     state = State.Bored

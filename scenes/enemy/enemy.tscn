@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://40alfoll3nx"]
+[gd_scene load_steps=7 format=3 uid="uid://40alfoll3nx"]
 
 [ext_resource type="Script" uid="uid://cvnt6q0t6sl51" path="res://scripts/enemy/enemy.gd" id="1_4a83h"]
 [ext_resource type="Texture2D" uid="uid://b0k8v2tca5hxt" path="res://icon.svg" id="2_a3pup"]
 [ext_resource type="PackedScene" uid="uid://c2p6jjkkyx88n" path="res://scenes/enemy/gun.tscn" id="3_40wdo"]
+[ext_resource type="AudioStream" uid="uid://dl5tu2jyrbl01" path="res://assets/sfx/grunt/grunt.tres" id="4_gl05p"]
+[ext_resource type="AudioStream" uid="uid://cd33mf8eip6fo" path="res://assets/sfx/death/death.tres" id="5_cwlon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig63i"]
 
-[node name="Enemy" type="RigidBody2D" node_paths=PackedStringArray("nav", "bored_timer", "unbored_timer")]
+[node name="Enemy" type="RigidBody2D" node_paths=PackedStringArray("nav", "bored_timer", "unbored_timer", "grunt_audio_player", "death_audio_player")]
 collision_layer = 20
 can_sleep = false
 lock_rotation = true
@@ -14,6 +16,8 @@ script = ExtResource("1_4a83h")
 nav = NodePath("NavigationAgent2D")
 bored_timer = NodePath("BoredTimer")
 unbored_timer = NodePath("UnBoredTimer")
+grunt_audio_player = NodePath("GruntAudioStreamPlayer")
+death_audio_player = NodePath("DeathAudioStreamPlayer")
 
 [node name="Gun" parent="." instance=ExtResource("3_40wdo")]
 
@@ -36,3 +40,11 @@ one_shot = true
 [node name="UnBoredTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="GruntAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gl05p")
+bus = &"Voice"
+
+[node name="DeathAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_cwlon")
+bus = &"Voice"

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://psrvv5ppicds"]
+[gd_scene load_steps=3 format=3 uid="uid://psrvv5ppicds"]
 
 [ext_resource type="PackedScene" uid="uid://40alfoll3nx" path="res://scenes/enemy/enemy.tscn" id="1_q05ki"]
+[ext_resource type="AudioStream" uid="uid://ca4ks60qv5wsm" path="res://assets/sfx/guns/mg-burst1.ogg" id="2_6hjmr"]
 
 [node name="Army" instance=ExtResource("1_q05ki")]
 health = 10.0
@@ -12,6 +13,8 @@ fire_interval = 0.13
 speed = 200.0
 burst_max_time = 1.5
 burst_recover_time = 2.0
+full_auto_audio = true
+sound = ExtResource("2_6hjmr")
 
 [node name="Label" type="Label" parent="Sprite2D" index="0"]
 offset_left = -51.2
