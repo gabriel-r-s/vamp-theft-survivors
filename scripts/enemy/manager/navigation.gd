@@ -30,7 +30,7 @@ func random_point() -> Vector2:
     # se nenhum enxerga o player, escolhe a própria
     # posição do player como fallback
     if points.is_empty():
-        points.push_back(player_global_pos())
+        return player_global_pos()
     return points.pick_random()
 
 func point_can_see_player(point: Vector2) -> bool:
