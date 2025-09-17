@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://h1nde6a6fvpg"]
+[gd_scene load_steps=6 format=3 uid="uid://h1nde6a6fvpg"]
 
 [ext_resource type="Texture2D" uid="uid://b0k8v2tca5hxt" path="res://icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dffoeh33g56im" path="res://scripts/player/player_controller.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://k4j4n3qmbnxl" path="res://scenes/player_bullet.tscn" id="2_qhqgy"]
+[ext_resource type="Script" uid="uid://bcmgmdtao3ni6" path="res://scripts/player/player_direction.gd" id="4_dqkch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 
@@ -21,6 +22,7 @@ shape = SubResource("RectangleShape2D_g2els")
 
 [node name="Direction" type="Node2D" parent="."]
 position = Vector2(0, -11)
+script = ExtResource("4_dqkch")
 
 [node name="Sprite2D" type="Sprite2D" parent="Direction"]
 scale = Vector2(0.0351562, 0.0351562)
