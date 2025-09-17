@@ -27,6 +27,10 @@ func player_global_pos() -> Vector2:
     return player.global_position
 
 func random_point() -> Vector2:
+    # se nenhum enxerga o player, escolhe a própria
+    # posição do player como fallback
+    if points.is_empty():
+        points.push_back(player_global_pos())
     return points.pick_random()
 
 func point_can_see_player(point: Vector2) -> bool:
@@ -52,8 +56,3 @@ func find_player() -> void:
         angle += delta_angle
 
         await get_tree().physics_frame
-
-    # se nenhum enxerga o player, escolhe a própria
-    # posição do player como fallback
-    if points.is_empty():
-        points.push_back(player_global_pos())

@@ -1,12 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://40alfoll3nx"]
+[gd_scene load_steps=9 format=3 uid="uid://40alfoll3nx"]
 
 [ext_resource type="Script" uid="uid://cvnt6q0t6sl51" path="res://scripts/enemy/enemy.gd" id="1_4a83h"]
 [ext_resource type="Texture2D" uid="uid://b0k8v2tca5hxt" path="res://icon.svg" id="2_a3pup"]
 [ext_resource type="PackedScene" uid="uid://c2p6jjkkyx88n" path="res://scenes/enemy/gun.tscn" id="3_40wdo"]
 [ext_resource type="AudioStream" uid="uid://dl5tu2jyrbl01" path="res://assets/sfx/grunt/grunt.tres" id="4_gl05p"]
 [ext_resource type="AudioStream" uid="uid://cd33mf8eip6fo" path="res://assets/sfx/death/death.tres" id="5_cwlon"]
+[ext_resource type="Script" uid="uid://3dqs7j4qwg7p" path="res://scripts/enemy/sprite.gd" id="6_cwlon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig63i"]
+size = Vector2(20, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cwlon"]
 
 [node name="Enemy" type="RigidBody2D" node_paths=PackedStringArray("nav", "bored_timer", "unbored_timer", "grunt_audio_player", "death_audio_player")]
 collision_layer = 20
@@ -22,11 +26,13 @@ death_audio_player = NodePath("DeathAudioStreamPlayer")
 [node name="Gun" parent="." instance=ExtResource("3_40wdo")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1.19209e-06, -5.96046e-07)
 scale = Vector2(0.15625, 0.15625)
 texture = ExtResource("2_a3pup")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_ig63i")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -48,3 +54,7 @@ bus = &"Voice"
 [node name="DeathAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_cwlon")
 bus = &"Voice"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cwlon")
+script = ExtResource("6_cwlon")

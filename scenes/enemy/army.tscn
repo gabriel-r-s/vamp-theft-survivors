@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://psrvv5ppicds"]
+[gd_scene load_steps=4 format=3 uid="uid://psrvv5ppicds"]
 
 [ext_resource type="PackedScene" uid="uid://40alfoll3nx" path="res://scenes/enemy/enemy.tscn" id="1_q05ki"]
 [ext_resource type="AudioStream" uid="uid://ca4ks60qv5wsm" path="res://assets/sfx/guns/mg-burst1.ogg" id="2_6hjmr"]
+[ext_resource type="SpriteFrames" uid="uid://bulg0fj3e7jml" path="res://assets/sprites/army.tres" id="3_ywi5f"]
 
 [node name="Army" instance=ExtResource("1_q05ki")]
 health = 30.0
@@ -23,3 +24,8 @@ offset_right = 6.8
 offset_bottom = 58.8
 theme_override_font_sizes/font_size = 80
 text = "A"
+
+[node name="AnimatedSprite2D" parent="." index="8"]
+sprite_frames = ExtResource("3_ywi5f")
+animation = &"stop"
+frame_progress = 0.4748549

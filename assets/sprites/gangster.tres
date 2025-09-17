@@ -1,0 +1,58 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://bovjk0e187ksa"]
+
+[ext_resource type="Texture2D" uid="uid://d21qpj7xtfedq" path="res://assets/sprites/gangster.png" id="1_gqmhd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ulfx"]
+atlas = ExtResource("1_gqmhd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60wr1"]
+atlas = ExtResource("1_gqmhd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qaore"]
+atlas = ExtResource("1_gqmhd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh101"]
+atlas = ExtResource("1_gqmhd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khfef"]
+atlas = ExtResource("1_gqmhd")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oem2"]
+atlas = ExtResource("1_gqmhd")
+region = Rect2(128, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ulfx")
+}],
+"loop": true,
+"name": &"stop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60wr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qaore")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh101")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khfef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oem2")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]

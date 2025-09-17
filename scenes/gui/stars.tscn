@@ -21,6 +21,7 @@ grow_horizontal = 0
 alignment = 2
 
 [node name="Debug" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_left = 283.0
 offset_top = 60.0

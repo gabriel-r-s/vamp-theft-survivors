@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2efikpmxs3a2"]
+[gd_scene load_steps=4 format=3 uid="uid://c2efikpmxs3a2"]
 
 [ext_resource type="PackedScene" uid="uid://40alfoll3nx" path="res://scenes/enemy/enemy.tscn" id="1_p5o8i"]
 [ext_resource type="AudioStream" uid="uid://dn60i2idmjawx" path="res://assets/sfx/guns/pistol.tres" id="2_vgxg8"]
+[ext_resource type="SpriteFrames" uid="uid://d3gdnnevtyp4m" path="res://assets/sprites/police.tres" id="3_aosl0"]
 
 [node name="Police" instance=ExtResource("1_p5o8i")]
 health = 10.0
@@ -21,3 +22,7 @@ offset_right = 6.8
 offset_bottom = 58.8
 theme_override_font_sizes/font_size = 80
 text = "P"
+
+[node name="AnimatedSprite2D" parent="." index="8"]
+sprite_frames = ExtResource("3_aosl0")
+animation = &"stop"

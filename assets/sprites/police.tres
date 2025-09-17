@@ -1,0 +1,58 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://d3gdnnevtyp4m"]
+
+[ext_resource type="Texture2D" uid="uid://b5ompt6vsgsm7" path="res://assets/sprites/police.png" id="1_evx7a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mewdu"]
+atlas = ExtResource("1_evx7a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr07d"]
+atlas = ExtResource("1_evx7a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82x68"]
+atlas = ExtResource("1_evx7a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvwkj"]
+atlas = ExtResource("1_evx7a")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jp7nk"]
+atlas = ExtResource("1_evx7a")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rdce"]
+atlas = ExtResource("1_evx7a")
+region = Rect2(128, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mewdu")
+}],
+"loop": true,
+"name": &"stop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr07d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82x68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvwkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jp7nk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rdce")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]

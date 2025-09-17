@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://byfvx6jix2s6e"]
+[gd_scene load_steps=4 format=3 uid="uid://byfvx6jix2s6e"]
 
 [ext_resource type="PackedScene" uid="uid://40alfoll3nx" path="res://scenes/enemy/enemy.tscn" id="1_o4q5g"]
 [ext_resource type="AudioStream" uid="uid://dw3p6eoyo42kp" path="res://assets/sfx/guns/smg-burst.tres" id="2_lihbe"]
+[ext_resource type="SpriteFrames" uid="uid://cmbhqbtp31lq0" path="res://assets/sprites/swat.tres" id="3_cgm7h"]
 
 [node name="Swat" instance=ExtResource("1_o4q5g")]
 health = 20.0
@@ -22,3 +23,6 @@ offset_right = 6.8
 offset_bottom = 58.8
 theme_override_font_sizes/font_size = 80
 text = "S"
+
+[node name="AnimatedSprite2D" parent="." index="8"]
+sprite_frames = ExtResource("3_cgm7h")
