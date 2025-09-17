@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b0k8v2tca5hxt" path="res://icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dffoeh33g56im" path="res://scripts/player/player_controller.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://k4j4n3qmbnxl" path="res://scenes/player_bullet.tscn" id="2_qhqgy"]
-[ext_resource type="Script" uid="uid://bcmgmdtao3ni6" path="res://scripts/player/player_direction.gd" id="4_dqkch"]
+[ext_resource type="Script" path="res://scripts/player/player_direction.gd" id="4_dqkch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 
@@ -12,6 +12,7 @@ collision_layer = 10
 script = ExtResource("1_g2els")
 rot_dir = NodePath("Direction")
 player_bullet_scene = ExtResource("2_qhqgy")
+damage = 6.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.146484, 0.146484)

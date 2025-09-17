@@ -10,35 +10,35 @@ var speed: float = 200.0
 var dir: Vector2 = Vector2.LEFT
 
 func dmg(dmg_: float) -> PlayerBullet:
-	self.damage = dmg_
-	return self
+    self.damage = dmg_
+    return self
 
 func set_target(tgt_: WeakRef) -> PlayerBullet:
-	self.target = tgt_
-	return self
+    self.target = tgt_
+    return self
 
 func set_start_position(pos_: Vector2) -> PlayerBullet:
-	self.global_position = pos_
-	return self
+    self.global_position = pos_
+    return self
 
 func timeout(secs: float) -> PlayerBullet:
-	self.timer.wait_time = secs
-	return self
+    self.timer.wait_time = secs
+    return self
 
 func _ready() -> void:
-	timer.start()
+    timer.start()
 
 func _physics_process(_delta: float) -> void:
-	var target_ref = target.get_ref()
-	if target_ref != null:
-		dir = self.position.direction_to(target_ref.position)
-	velocity = dir * speed
-	move_and_slide()
+    var target_ref = target.get_ref()
+    if target_ref != null:
+        dir = self.position.direction_to(target_ref.position)
+    velocity = dir * speed
+    move_and_slide()
 
 func _on_timer_timeout() -> void:
-	queue_free()
+    queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.has_method("get_hit"):
-		body.get_hit(self.damage)
-	queue_free()
+    if body.has_method("get_hit"):
+        body.get_hit(self.damage)
+    queue_free()
