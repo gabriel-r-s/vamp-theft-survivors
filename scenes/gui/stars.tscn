@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cy8k35gxqmn75" path="res://scripts/gui/stars.gd" id="1_mjefv"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("container")]
+[node name="Stars" type="Control" node_paths=PackedStringArray("container")]
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0

@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgfc1smtvblod"]
+[gd_scene load_steps=10 format=3 uid="uid://cgfc1smtvblod"]
 
 [ext_resource type="Script" uid="uid://bwq26g5gw1qgo" path="res://scripts/enemy/manager/manager.gd" id="1_ida8v"]
 [ext_resource type="Script" uid="uid://6dxager3jmly" path="res://scripts/enemy/manager/spawner.gd" id="2_skv2e"]
 [ext_resource type="Script" uid="uid://5ue8j18ulde5" path="res://scripts/enemy/manager/navigation.gd" id="3_lgc55"]
-[ext_resource type="PackedScene" uid="uid://ds7827a7vmvx4" path="res://scenes/gui/stars.tscn" id="4_exxe8"]
 [ext_resource type="Script" uid="uid://cgpokpsdgaibl" path="res://scripts/enemy/manager/stars.gd" id="4_wiuui"]
 [ext_resource type="Script" uid="uid://cf6url7l3k8l1" path="res://scripts/enemy/manager/debug_draw.gd" id="4_x6yy4"]
 [ext_resource type="PackedScene" uid="uid://dvgi24nuu6fo1" path="res://scenes/enemy/gangster.tscn" id="5_ujqhs"]
@@ -36,10 +35,8 @@ collide_with_areas = true
 
 [node name="Stars" type="Node" parent="." node_paths=PackedStringArray("stars_widget")]
 script = ExtResource("4_wiuui")
-stars_widget = NodePath("Gui")
+stars_widget = NodePath("")
 enemy_scenes = Array[PackedScene]([ExtResource("5_ujqhs"), ExtResource("6_wwe4m"), ExtResource("7_wwv28"), ExtResource("8_u4h48")])
-
-[node name="Gui" parent="Stars" instance=ExtResource("4_exxe8")]
 
 [node name="Timer" type="Timer" parent="Stars"]
 wait_time = 0.5

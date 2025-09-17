@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://daeon1jcpynan"]
+
+[ext_resource type="PackedScene" uid="uid://b83mchmyix4g5" path="res://scenes/enemy_debug.tscn" id="1_uwrxv"]
+
+[node name="Game" type="Node"]
+
+[node name="EnemyDebug" parent="." instance=ExtResource("1_uwrxv")]

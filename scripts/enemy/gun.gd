@@ -34,8 +34,8 @@ func shoot() -> void:
     if player_pos != null:
         var dir := enemy.global_position.direction_to(player_pos)
         var bullet: Bullet = bullet_scene.instantiate()
-        bullet = bullet.dmg(dmg).dir(dir, speed)
-        add_sibling(bullet)
+        bullet = bullet.dmg(dmg).pos(enemy.global_position).dir(dir, speed)
+        enemy.add_sibling(bullet)
         if not full_auto_audio:
             audio_stream_player.play()
 

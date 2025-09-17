@@ -40,13 +40,11 @@ func _on_enemy_die() -> void:
     num_enemies -= 1
 
 func set_stars(n: int) -> void:
-    print("set stars ", n)
     stars_widget.stop_flashing()
     stars_widget.set_stars(n)
     stars = n
 
 func set_stars_flashing() -> void:
-    print("set stars flashing")
     stars_widget.start_flashing()
     stars = -1
 

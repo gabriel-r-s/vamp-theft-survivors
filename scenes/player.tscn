@@ -28,3 +28,7 @@ script = ExtResource("4_dqkch")
 [node name="Sprite2D" type="Sprite2D" parent="Direction"]
 scale = Vector2(0.0351562, 0.0351562)
 texture = ExtResource("1_3vyb7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0

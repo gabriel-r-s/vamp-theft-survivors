@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://b83mchmyix4g5"]
+[gd_scene load_steps=8 format=3 uid="uid://b83mchmyix4g5"]
 
+[ext_resource type="PackedScene" uid="uid://ds7827a7vmvx4" path="res://scenes/gui/stars.tscn" id="1_dhxpb"]
 [ext_resource type="PackedScene" uid="uid://h1nde6a6fvpg" path="res://scenes/player.tscn" id="1_ebxje"]
 [ext_resource type="PackedScene" uid="uid://cgfc1smtvblod" path="res://scenes/enemy/manager.tscn" id="2_o4lq1"]
 [ext_resource type="Script" uid="uid://ber8vtx1ah47e" path="res://scripts/hordes.gd" id="4_8lahr"]
@@ -18,12 +19,28 @@ size = Vector2(123.666, 20)
 
 [node name="EnemyDebug" type="Node"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Gui" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stars" parent="CanvasLayer/Gui" instance=ExtResource("1_dhxpb")]
+layout_mode = 1
+
 [node name="Player" parent="." instance=ExtResource("1_ebxje")]
 position = Vector2(468, 170)
 
 [node name="EnemyManager" parent="." node_paths=PackedStringArray("player", "spawn_points") instance=ExtResource("2_o4lq1")]
 player = NodePath("../Player")
 spawn_points = [NodePath("../SpawnPoints/Marker2D"), NodePath("../SpawnPoints/Marker2D2"), NodePath("../SpawnPoints/Marker2D3"), NodePath("../SpawnPoints/Marker2D4"), NodePath("../SpawnPoints/Marker2D5"), NodePath("../SpawnPoints/Marker2D6")]
+
+[node name="Stars" parent="EnemyManager" index="2" node_paths=PackedStringArray("stars_widget")]
+stars_widget = NodePath("../../CanvasLayer/Gui/Stars")
 
 [node name="DebugSpawn" type="Timer" parent="."]
 
