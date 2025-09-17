@@ -30,7 +30,7 @@ func start() -> void:
     await get_tree().create_timer(30).timeout
 
     stars.set_stars_flashing()
-    await get_tree().create_timer(40).timeout
+    await get_tree().create_timer(30).timeout
 
     # Terceira horda
     stars.set_stars(4)

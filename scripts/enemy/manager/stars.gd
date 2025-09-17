@@ -48,7 +48,7 @@ func set_stars(n: int) -> void:
 func set_stars_flashing() -> void:
     print("set stars flashing")
     stars_widget.start_flashing()
-    stars = 0
+    stars = -1
 
 func can_spawn_at(point: Vector2) -> bool:
     return point.distance_to(manager.player.global_position) > 50.0
@@ -76,6 +76,8 @@ func pick_point() -> Vector2:
     return manager.player.global_position + random_offset
 
 func _timer_tick() -> void:
+    if stars < 0:
+        return
     if num_enemies < budgets[stars] and randf() < 0.25:
         var enemy_scene: PackedScene = enemy_scenes[pick_weighted(probabilities[stars])]
         var enemy_pos := pick_point()
