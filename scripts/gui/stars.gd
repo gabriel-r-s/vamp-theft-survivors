@@ -23,6 +23,12 @@ func remove_star() -> void:
     if popped != null:
         popped.queue_free()
 
+func set_stars(n: int) -> void:
+    while stars.size() > n:
+        remove_star()
+    while stars.size() < n:
+        add_star()
+
 func flash_on() -> void:
     flash_state = true
     for star: Label in stars:

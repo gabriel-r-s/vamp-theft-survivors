@@ -1,17 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://b83mchmyix4g5"]
+[gd_scene load_steps=7 format=3 uid="uid://b83mchmyix4g5"]
 
 [ext_resource type="PackedScene" uid="uid://h1nde6a6fvpg" path="res://scenes/player.tscn" id="1_ebxje"]
-[ext_resource type="Script" uid="uid://b75luvjliyiha" path="res://scripts/enemy/debug.gd" id="1_o4lq1"]
-[ext_resource type="PackedScene" uid="uid://dvgi24nuu6fo1" path="res://scenes/enemy/gangster.tscn" id="2_dhxpb"]
 [ext_resource type="PackedScene" uid="uid://cgfc1smtvblod" path="res://scenes/enemy/manager.tscn" id="2_o4lq1"]
-[ext_resource type="PackedScene" uid="uid://c2efikpmxs3a2" path="res://scenes/enemy/police.tscn" id="3_lxcmc"]
-[ext_resource type="PackedScene" uid="uid://byfvx6jix2s6e" path="res://scenes/enemy/swat.tscn" id="4_hyful"]
+[ext_resource type="Script" uid="uid://ber8vtx1ah47e" path="res://scripts/hordes.gd" id="4_8lahr"]
 [ext_resource type="Texture2D" uid="uid://b0k8v2tca5hxt" path="res://icon.svg" id="5_dhxpb"]
-[ext_resource type="PackedScene" uid="uid://psrvv5ppicds" path="res://scenes/enemy/army.tscn" id="5_f3i3a"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8lahr"]
-vertices = PackedVector2Array(198.062, 90.6094, 650.953, 0.0234375, 650.039, 362.023, 126.992, 238.062, 0.148438, 362.969, 72.9531, 211.992, 2.85156, 0.96875, 144.008, 64.5703)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 0, 2), PackedInt32Array(3, 2, 4), PackedInt32Array(5, 3, 4), PackedInt32Array(5, 4, 6), PackedInt32Array(7, 5, 6), PackedInt32Array(7, 6, 1), PackedInt32Array(7, 1, 0)])
+vertices = PackedVector2Array(650.9531, 0.0234375, 650.03906, 362.02344, 504.75, 293.21094, 489.21094, 235.25781, 198.0625, 90.609375, 331.1172, 277.6172, 126.99219, 238.0625, 346.65625, 335.5703, 0.1484375, 362.96875, 72.953125, 211.99219, 2.8515625, 0.96875, 144.00781, 64.57031)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(0, 2, 3), PackedInt32Array(4, 0, 3), PackedInt32Array(4, 3, 5), PackedInt32Array(6, 4, 5), PackedInt32Array(6, 5, 7), PackedInt32Array(7, 2, 1), PackedInt32Array(7, 1, 8), PackedInt32Array(6, 7, 8), PackedInt32Array(9, 6, 8), PackedInt32Array(9, 8, 10), PackedInt32Array(11, 9, 10), PackedInt32Array(11, 10, 0), PackedInt32Array(11, 0, 4)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-17, -19, 671, -20, 670, 382, -20, 383)])
 sample_partition_type = 1
 parsed_geometry_type = 1
@@ -20,19 +16,14 @@ agent_radius = 20.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lahr"]
 size = Vector2(123.666, 20)
 
-[node name="EnemyDebug" type="Node" node_paths=PackedStringArray("manager")]
-script = ExtResource("1_o4lq1")
-manager = NodePath("EnemyManager")
-gangster_scene = ExtResource("2_dhxpb")
-police_scene = ExtResource("3_lxcmc")
-swat_scene = ExtResource("4_hyful")
-army_scene = ExtResource("5_f3i3a")
+[node name="EnemyDebug" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_ebxje")]
 position = Vector2(468, 170)
 
-[node name="EnemyManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_o4lq1")]
+[node name="EnemyManager" parent="." node_paths=PackedStringArray("player", "spawn_points") instance=ExtResource("2_o4lq1")]
 player = NodePath("../Player")
+spawn_points = [NodePath("../SpawnPoints/Marker2D"), NodePath("../SpawnPoints/Marker2D2"), NodePath("../SpawnPoints/Marker2D3"), NodePath("../SpawnPoints/Marker2D4"), NodePath("../SpawnPoints/Marker2D5"), NodePath("../SpawnPoints/Marker2D6")]
 
 [node name="DebugSpawn" type="Timer" parent="."]
 
@@ -63,6 +54,46 @@ position = Vector2(51.3661, 0.453205)
 scale = Vector2(0.969755, 0.166824)
 texture = ExtResource("5_dhxpb")
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(468.00003, 272)
+rotation = -3.403387
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D2"]
+position = Vector2(51.8328, 1.52588e-05)
+shape = SubResource("RectangleShape2D_8lahr")
+
+[node name="Sprite2D" type="Sprite2D" parent="NavigationRegion2D/StaticBody2D2"]
+position = Vector2(51.3661, 0.453205)
+scale = Vector2(0.969755, 0.166824)
+texture = ExtResource("5_dhxpb")
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(56, 112)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(304, 40)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(184, 304)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(459, 328)
+
+[node name="Marker2D5" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(504, 56)
+
+[node name="Marker2D6" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(272, 184)
+
+[node name="Hordes" type="Node" parent="." node_paths=PackedStringArray("stars")]
+script = ExtResource("4_8lahr")
+stars = NodePath("../EnemyManager/Stars")
+
 [connection signal="timeout" from="DebugSpawn" to="." method="_on_spawn_timeout"]
 [connection signal="timeout" from="DebugSpawnPre" to="DebugSpawn" method="start"]
 [connection signal="timeout" from="DebugSpawnPost" to="DebugSpawn" method="queue_free"]
+
+[editable path="EnemyManager"]

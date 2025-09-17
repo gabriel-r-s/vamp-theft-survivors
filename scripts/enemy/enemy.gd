@@ -14,6 +14,8 @@ extends RigidBody2D
 @export var grunt_audio_player: AudioStreamPlayer2D
 @export var death_audio_player: AudioStreamPlayer2D
 
+signal die
+
 enum State {
     Manouvering,
     Bored,
@@ -38,6 +40,7 @@ func get_hit(dmg: float) -> void:
         add_sibling(death_audio_player)
         death_audio_player.play()
         death_audio_player.finished.connect(func(): death_audio_player.queue_free())
+        die.emit()
         queue_free()
     else:
         grunt_audio_player.play()

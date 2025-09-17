@@ -1,6 +1,8 @@
 class_name EnemyManagerNavigation
 extends Node
 
+@onready var manager = get_parent()
+
 @export_group("Config")
 @export var min_choose_dist := 150.0
 @export var max_choose_dist := 250.0
@@ -12,19 +14,16 @@ extends Node
 @export var find_player_timer: Timer
 @export var raycast: RayCast2D
 
-var player: Node2D = null
 var points: Array[Vector2] = []
 
 func _ready() -> void:
-    var parent := get_parent()
-    parent.ready.connect(_on_parent_ready.bind(parent))
+    manager.ready.connect(_on_parent_ready)
 
-func _on_parent_ready(parent: Node) -> void:
-    player = parent.player
+func _on_parent_ready() -> void:
     find_player_timer.timeout.connect(find_player)
 
 func player_global_pos() -> Vector2:
-    return player.global_position
+    return manager.player.global_position
 
 func random_point() -> Vector2:
     # se nenhum enxerga o player, escolhe a própria
@@ -37,7 +36,7 @@ func point_can_see_player(point: Vector2) -> bool:
     raycast.global_position = point
     raycast.target_position = player_global_pos() - point
     raycast.force_raycast_update()
-    return raycast.is_colliding() and raycast.get_collider() == player
+    return raycast.is_colliding() and raycast.get_collider() == manager.player
 
 func find_player() -> void:
     # escolher `num_choose_points` pontos ao redor do player,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgfc1smtvblod"]
+[gd_scene load_steps=11 format=3 uid="uid://cgfc1smtvblod"]
 
 [ext_resource type="Script" uid="uid://bwq26g5gw1qgo" path="res://scripts/enemy/manager/manager.gd" id="1_ida8v"]
 [ext_resource type="Script" uid="uid://6dxager3jmly" path="res://scripts/enemy/manager/spawner.gd" id="2_skv2e"]
@@ -6,11 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://ds7827a7vmvx4" path="res://scenes/gui/stars.tscn" id="4_exxe8"]
 [ext_resource type="Script" uid="uid://cgpokpsdgaibl" path="res://scripts/enemy/manager/stars.gd" id="4_wiuui"]
 [ext_resource type="Script" uid="uid://cf6url7l3k8l1" path="res://scripts/enemy/manager/debug_draw.gd" id="4_x6yy4"]
+[ext_resource type="PackedScene" uid="uid://dvgi24nuu6fo1" path="res://scenes/enemy/gangster.tscn" id="5_ujqhs"]
+[ext_resource type="PackedScene" uid="uid://c2efikpmxs3a2" path="res://scenes/enemy/police.tscn" id="6_wwe4m"]
+[ext_resource type="PackedScene" uid="uid://byfvx6jix2s6e" path="res://scenes/enemy/swat.tscn" id="7_wwv28"]
+[ext_resource type="PackedScene" uid="uid://psrvv5ppicds" path="res://scenes/enemy/army.tscn" id="8_u4h48"]
 
-[node name="EnemyManager" type="Node" node_paths=PackedStringArray("spawner", "navigation")]
+[node name="EnemyManager" type="Node" node_paths=PackedStringArray("spawner", "navigation", "stars")]
 script = ExtResource("1_ida8v")
 spawner = NodePath("Spawner")
 navigation = NodePath("Navigation")
+stars = NodePath("Stars")
 
 [node name="Spawner" type="Node" parent="."]
 script = ExtResource("2_skv2e")
@@ -29,12 +34,20 @@ enabled = false
 collision_mask = 9
 collide_with_areas = true
 
-[node name="Stars" type="Node" parent="."]
+[node name="Stars" type="Node" parent="." node_paths=PackedStringArray("stars_widget")]
 script = ExtResource("4_wiuui")
+stars_widget = NodePath("Gui")
+enemy_scenes = Array[PackedScene]([ExtResource("5_ujqhs"), ExtResource("6_wwe4m"), ExtResource("7_wwv28"), ExtResource("8_u4h48")])
 
 [node name="Gui" parent="Stars" instance=ExtResource("4_exxe8")]
+
+[node name="Timer" type="Timer" parent="Stars"]
+wait_time = 0.5
 
 [node name="DebugDraw" type="Node2D" parent="." node_paths=PackedStringArray("manager")]
 visible = false
 script = ExtResource("4_x6yy4")
 manager = NodePath("..")
+
+[connection signal="ready" from="Stars" to="Stars/Timer" method="start"]
+[connection signal="timeout" from="Stars/Timer" to="Stars" method="_timer_tick"]
