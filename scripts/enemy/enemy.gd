@@ -13,6 +13,7 @@ extends RigidBody2D
 @export var unbored_timer: Timer
 @export var grunt_audio_player: AudioStreamPlayer2D
 @export var death_audio_player: AudioStreamPlayer2D
+@export var on_screen: VisibleOnScreenNotifier2D
 
 signal die
 
@@ -98,7 +99,7 @@ func update(delta: float) -> void:
 
         State.Shooting:
             player_pos = manager.navigation.player_global_pos()
-            if bored_timer.is_stopped():
+            if bored_timer.is_stopped() or not on_screen.is_on_screen():
                 next_state = State.Bored
             elif not can_see_player():
                 next_state = State.Manouvering

@@ -13,7 +13,7 @@ size = Vector2(20, 26)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cwlon"]
 
-[node name="Enemy" type="RigidBody2D" node_paths=PackedStringArray("nav", "bored_timer", "unbored_timer", "grunt_audio_player", "death_audio_player")]
+[node name="Enemy" type="RigidBody2D" node_paths=PackedStringArray("nav", "bored_timer", "unbored_timer", "grunt_audio_player", "death_audio_player", "on_screen")]
 collision_layer = 20
 can_sleep = false
 lock_rotation = true
@@ -23,6 +23,7 @@ bored_timer = NodePath("BoredTimer")
 unbored_timer = NodePath("UnBoredTimer")
 grunt_audio_player = NodePath("GruntAudioStreamPlayer")
 death_audio_player = NodePath("DeathAudioStreamPlayer")
+on_screen = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="Gun" parent="." instance=ExtResource("3_40wdo")]
 
