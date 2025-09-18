@@ -20,6 +20,10 @@ offset_bottom = 40.0
 grow_horizontal = 0
 alignment = 2
 
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Testing"
+
 [node name="Debug" type="Control" parent="."]
 visible = false
 anchors_preset = 0

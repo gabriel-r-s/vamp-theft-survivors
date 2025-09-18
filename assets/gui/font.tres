@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" load_steps=3 format=3 uid="uid://j8pak768buu7"]
+
+[ext_resource type="FontFile" uid="uid://cjfe0f4eft1ce" path="res://assets/gui/at02.ttf" id="1_milfj"]
+[ext_resource type="FontFile" uid="uid://dwj11dbeiueen" path="res://assets/gui/DejaVuSans.ttf" id="2_2r8f7"]
+
+[resource]
+fallbacks = Array[Font]([ExtResource("2_2r8f7")])
+base_font = ExtResource("1_milfj")
