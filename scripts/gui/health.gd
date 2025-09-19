@@ -3,7 +3,6 @@ extends Control
 
 @export var icon_scene: PackedScene
 @export var container: HBoxContainer
-@export var player: Player
 
 var health := 0
 

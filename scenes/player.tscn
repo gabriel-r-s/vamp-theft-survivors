@@ -36,6 +36,10 @@ script = ExtResource("4_dqkch")
 texture = ExtResource("5_fjrip")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -450
+limit_top = -380
+limit_right = 600
+limit_bottom = 650
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 

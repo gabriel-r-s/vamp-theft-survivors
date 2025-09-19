@@ -56,15 +56,12 @@ func _input(event: InputEvent) -> void:
     if event is InputEventMouseButton:
         var mouse_pos: Vector2 = get_viewport().get_canvas_transform().affine_inverse() * event.global_position
         if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-            var targets: Array[Dictionary] = find_targets(mouse_pos)
-            if targets.size() > 0:
-                var collider: CollisionObject2D = targets[0]['collider']
-                if collider.get_collision_layer_value(3) and collider.get_collision_layer_value(5):
-                    var target := collider as Node2D
-                    rot_pos = target.position
-                    target_node = weakref(target)
-                    rotate_pov()
-                    is_attacking = true
+            var target: Enemy = find_target(mouse_pos)
+            if target != null:
+                rot_pos = target.position
+                target_node = weakref(target)
+                rotate_pov()
+                is_attacking = true
             else:
                 move_pos = mouse_pos
                 rot_pos = move_pos
@@ -83,14 +80,20 @@ func rotate_pov():
     velocity_rot = rot_angle / rot_speed
     is_rotating = true
     
-func find_targets(mouse_pos: Vector2) -> Array[Dictionary]:
+func find_target(mouse_pos: Vector2) -> Enemy:
     var space_state: PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
     var query: PhysicsPointQueryParameters2D = PhysicsPointQueryParameters2D.new()
     query.position = mouse_pos
     query.collide_with_areas = true
     query.collide_with_bodies = true
+
+    var targets := space_state.intersect_point(query) 
+
+    for target in targets:
+        if target["collider"] is Enemy:
+            return target["collider"]
     
-    return space_state.intersect_point(query)
+    return null
     
 func fire_bullet(node: WeakRef):
     var player_bullet: PlayerBullet = player_bullet_scene.instantiate()
@@ -104,8 +107,8 @@ func get_rotation_angle(vA: Vector2, vB: Vector2, vC: Vector2) -> float:
 
 func add_health(n: int) -> void:
     health += n
-    if health < 0:
-        die.emit()
+    if health <= 0:
+        (func(): die.emit()).call_deferred()
     else:
         health = mini(health, max_health)
 

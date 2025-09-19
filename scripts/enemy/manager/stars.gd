@@ -9,7 +9,7 @@ extends Node
 
 @export var probabilities := [
     [1.0, 0.0, 0.0, 0.0], # 0 estrela: 100% gangster
-    [0.5, 0.5, 0.0, 0.0], # 1 estrela: 50% gangster, 50% policia
+    [0.0, 1.0, 0.0, 0.0], # 1 estrela: 100% policia
     [0.0, 1.0, 0.0, 0.0], # 2 estrela: 100% policia
     [0.0, 0.5, 0.5, 0.0], # 3 estrela: 50% policia, 50% swat
     [0.0, 0.3, 0.7, 0.0], # 4 estrela: 30% policia, 70% swat

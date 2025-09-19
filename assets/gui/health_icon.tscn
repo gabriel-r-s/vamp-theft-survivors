@@ -1,11 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd4ufdmgfj2mj"]
+[gd_scene load_steps=2 format=3 uid="uid://cd4ufdmgfj2mj"]
 
 [ext_resource type="Texture2D" uid="uid://dlcv7px7tog2f" path="res://assets/sprites/burger.png" id="1_hhvnu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lkftb"]
-atlas = ExtResource("1_hhvnu")
-region = Rect2(16, 0, 16, 16)
-
 [node name="TextureRect" type="TextureRect"]
-texture = SubResource("AtlasTexture_lkftb")
+texture = ExtResource("1_hhvnu")
 stretch_mode = 2

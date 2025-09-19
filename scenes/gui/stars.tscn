@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ds7827a7vmvx4"]
+[gd_scene load_steps=3 format=3 uid="uid://ds7827a7vmvx4"]
 
 [ext_resource type="Script" uid="uid://cy8k35gxqmn75" path="res://scripts/gui/stars.gd" id="1_mjefv"]
+[ext_resource type="PackedScene" uid="uid://dky202ydh2urq" path="res://scenes/gui/star_icon.tscn" id="2_nc872"]
 
 [node name="Stars" type="Control" node_paths=PackedStringArray("container")]
 layout_mode = 3
@@ -8,6 +9,7 @@ anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 script = ExtResource("1_mjefv")
+icon_scene = ExtResource("2_nc872")
 container = NodePath("HBoxContainer")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -16,7 +18,7 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -40.0
-offset_bottom = 40.0
+offset_bottom = 16.0
 grow_horizontal = 0
 alignment = 2
 

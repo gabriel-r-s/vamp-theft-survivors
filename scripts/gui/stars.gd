@@ -1,10 +1,9 @@
 class_name Stars
 extends Control
 
+@export var icon_scene: PackedScene
 @export var container: HBoxContainer
 
-const FULL_STAR := "★"
-const OUTLINE_STAR := "☆"
 const FLASH_DELAY := 0.6
 
 var stars: Array[Control] = []
@@ -13,13 +12,12 @@ var flashing := false
 var flash_tween: Tween
 
 func add_star() -> void:
-    var star := Label.new()
-    star.text = FULL_STAR if flash_state else OUTLINE_STAR
+    var star := icon_scene.instantiate()
     stars.push_back(star)
     container.add_child(star)
 
 func remove_star() -> void:
-    var popped: Label = stars.pop_back()
+    var popped: Node = stars.pop_back()
     if popped != null:
         popped.queue_free()
 
@@ -31,13 +29,13 @@ func set_stars(n: int) -> void:
 
 func flash_on() -> void:
     flash_state = true
-    for star: Label in stars:
-        star.text = FULL_STAR
+    for star: CanvasItem in stars:
+        star.visible = true
 
 func flash_off() -> void:
     flash_state = false
-    for star: Label in stars:
-        star.text = OUTLINE_STAR
+    for star: CanvasItem in stars:
+        star.visible = false
 
 func start_flashing() -> void:
     if flashing:
