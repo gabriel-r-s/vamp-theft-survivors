@@ -1,17 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://k4j4n3qmbnxl"]
+[gd_scene load_steps=6 format=3 uid="uid://k4j4n3qmbnxl"]
 
 [ext_resource type="Script" uid="uid://bi0qv4kwq2jbq" path="res://scripts/player/player_bullet.gd" id="1_4g3gs"]
+[ext_resource type="Texture2D" uid="uid://dimfb7p1uplyj" path="res://assets/bullet.tres" id="2_0cue5"]
 [ext_resource type="AudioStream" uid="uid://ba1neg7vsnqjw" path="res://assets/sfx/guns/player-gun.tres" id="2_46jqs"]
-
-[sub_resource type="Gradient" id="Gradient_4g3gs"]
-colors = PackedColorArray(0.32941177, 0, 0.49803922, 1, 0.32941177, 0, 0.49803922, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_y25gk"]
-gradient = SubResource("Gradient_4g3gs")
-width = 2
-height = 2
-fill_from = Vector2(1, 0)
-fill_to = Vector2(0, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y25gk"]
 radius = 2.0
@@ -27,7 +18,7 @@ timer = NodePath("Timer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3.93391e-06, 0)
-texture = SubResource("GradientTexture2D_y25gk")
+texture = ExtResource("2_0cue5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_y25gk")

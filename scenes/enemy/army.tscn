@@ -6,6 +6,7 @@
 
 [node name="Army" instance=ExtResource("1_q05ki")]
 health = 30.0
+health_drop_probability = 0.5
 max_speed = 20.0
 bore_time = 10.0
 

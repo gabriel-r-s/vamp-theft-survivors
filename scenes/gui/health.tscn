@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfqv15dthphqm"]
+
+[ext_resource type="Script" uid="uid://dqc1ubycbmvdd" path="res://scripts/gui/health.gd" id="1_vhro0"]
+[ext_resource type="PackedScene" uid="uid://cd4ufdmgfj2mj" path="res://assets/gui/health_icon.tscn" id="2_oqacq"]
+
+[node name="Health" type="Control" node_paths=PackedStringArray("container")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_vhro0")
+icon_scene = ExtResource("2_oqacq")
+container = NodePath("HBoxContainer")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 17.0

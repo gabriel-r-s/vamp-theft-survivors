@@ -2,6 +2,7 @@ class_name Enemy
 extends RigidBody2D
 
 @export var health := 5.0
+@export var health_drop_probability := 1.0
 @export var max_speed := 30.0
 @export var accel := 30.0
 @export var bore_time := 3.0
@@ -14,6 +15,7 @@ extends RigidBody2D
 @export var grunt_audio_player: AudioStreamPlayer2D
 @export var death_audio_player: AudioStreamPlayer2D
 @export var on_screen: VisibleOnScreenNotifier2D
+@export var health_scene: PackedScene
 
 signal die
 
@@ -41,6 +43,10 @@ func get_hit(dmg: float) -> void:
         add_sibling(death_audio_player)
         death_audio_player.play()
         death_audio_player.finished.connect(func(): death_audio_player.queue_free())
+        if randf() < health_drop_probability:
+            var health_item := health_scene.instantiate()
+            health_item.global_position = global_position
+            get_parent().add_child.call_deferred(health_item)
         die.emit()
         queue_free()
     else:

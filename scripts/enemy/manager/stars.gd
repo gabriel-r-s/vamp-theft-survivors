@@ -27,13 +27,16 @@ extends Node
     60, # 6 estrela: 60 inimigos
 ]
 
-@export var spawn_points: Array[Vector2] = []
+@export var spawn_points_node: Node
+
+var spawn_points: Array[Vector2] = []
 
 var stars := 0
 var num_enemies := 0
 
 func _ready() -> void:
-    for marker in manager.spawn_points:
+    for child in spawn_points_node.get_children():
+        var marker: Marker2D = child
         spawn_points.push_back(marker.global_position)
 
 func _on_enemy_die() -> void:
@@ -68,7 +71,7 @@ func pick_point() -> Vector2:
 
     # caso nao conseguir spawnar em nenhum ponto, escolhe
     # algum lugar em volta do player mesmo
-    var random_offset := Vector2.RIGHT * randf_range(20.0, 60.0)
+    var random_offset := Vector2.RIGHT * randf_range(50.0, 80.0)
     random_offset = random_offset.rotated(randf_range(0.0, 2.0 * PI))
 
     return manager.player.global_position + random_offset

@@ -1,7 +1,62 @@
-[gd_scene load_steps=2 format=3 uid="uid://daeon1jcpynan"]
+[gd_scene load_steps=7 format=3 uid="uid://daeon1jcpynan"]
 
-[ext_resource type="PackedScene" uid="uid://b83mchmyix4g5" path="res://scenes/enemy_debug.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://ds7827a7vmvx4" path="res://scenes/gui/stars.tscn" id="1_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://h1nde6a6fvpg" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://cgfc1smtvblod" path="res://scenes/enemy/manager.tscn" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://ber8vtx1ah47e" path="res://scripts/hordes.gd" id="3_lnu2h"]
+[ext_resource type="TileSet" uid="uid://b1hxlmce328ti" path="res://assets/tileset.tres" id="5_iywne"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_p57ef"]
+vertices = PackedVector2Array(310, 166, -310, 166, -310, -166, 310, -166)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-320, -176, 320, -176, 320, 176, -320, 176)])
 
 [node name="Game" type="Node"]
 
-[node name="EnemyDebug" parent="." instance=ExtResource("1_uwrxv")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Gui" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stars" parent="CanvasLayer/Gui" instance=ExtResource("1_lbhrr")]
+layout_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+
+[node name="EnemyManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_yqjtg")]
+player = NodePath("../Player")
+
+[node name="Stars" parent="EnemyManager" index="2" node_paths=PackedStringArray("stars_widget", "spawn_points_node")]
+stars_widget = NodePath("../../CanvasLayer/Gui/Stars")
+spawn_points_node = NodePath("../../SpawnPoints")
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(96, -88)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-176, -88)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-216, 48)
+
+[node name="Hordes" type="Node" parent="." node_paths=PackedStringArray("stars")]
+script = ExtResource("3_lnu2h")
+stars = NodePath("../EnemyManager/Stars")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_p57ef")
+
+[node name="BgLayer" type="TileMapLayer" parent="NavigationRegion2D"]
+tile_set = ExtResource("5_iywne")
+
+[node name="TopLayer" type="TileMapLayer" parent="NavigationRegion2D"]
+tile_set = ExtResource("5_iywne")
+
+[editable path="EnemyManager"]

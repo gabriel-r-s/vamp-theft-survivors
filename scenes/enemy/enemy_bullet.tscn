@@ -1,14 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://radjrghaqfr0"]
+[gd_scene load_steps=4 format=3 uid="uid://radjrghaqfr0"]
 
 [ext_resource type="Script" uid="uid://bcqhlhmwdyo5k" path="res://scripts/enemy/enemy_bullet.gd" id="1_mkf8s"]
-
-[sub_resource type="Gradient" id="Gradient_mkf8s"]
-colors = PackedColorArray(1, 0.839216, 0.0392157, 1, 1, 0.839216, 0.0392157, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_y25gk"]
-gradient = SubResource("Gradient_mkf8s")
-width = 2
-height = 2
+[ext_resource type="Texture2D" uid="uid://dimfb7p1uplyj" path="res://assets/bullet.tres" id="2_bkamy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y25gk"]
 radius = 2.0
@@ -25,7 +18,7 @@ timer = NodePath("Timer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3.93391e-06, 0)
-texture = SubResource("GradientTexture2D_y25gk")
+texture = ExtResource("2_bkamy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_y25gk")

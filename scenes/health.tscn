@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv1y13fxx46ec"]
+
+[ext_resource type="Script" uid="uid://0xwbeeldk4uk" path="res://scripts/health.gd" id="1_2rad1"]
+[ext_resource type="SpriteFrames" uid="uid://deyhy1ndcsgnc" path="res://assets/sprites/burger.tres" id="2_58c75"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_but5r"]
+size = Vector2(16, 16)
+
+[node name="Health" type="Area2D"]
+collision_mask = 10
+script = ExtResource("1_2rad1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_58c75")
+frame_progress = 0.6930208
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_but5r")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="ready" from="." to="AnimatedSprite2D" method="play"]

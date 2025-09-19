@@ -5,6 +5,7 @@
 [ext_resource type="SpriteFrames" uid="uid://bovjk0e187ksa" path="res://assets/sprites/gangster.tres" id="2_rhree"]
 
 [node name="Gangster" instance=ExtResource("1_m47f6")]
+health_drop_probability = 0.5
 bore_time = 2.0
 unbore_time = 5.0
 

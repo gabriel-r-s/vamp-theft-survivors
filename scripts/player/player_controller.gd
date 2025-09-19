@@ -6,6 +6,12 @@ extends CharacterBody2D
 @export var rot_speed: float = 10.0
 @export var player_bullet_scene: PackedScene
 @export var damage: float = 1.0
+@export var max_health := 6
+
+@export var health_widget: HealthWidget
+@export var hurt_audio_player: AudioStreamPlayer2D
+
+@onready var health := max_health
 
 var velocity_dir: Vector2 = Vector2.ZERO
 var move_pos: Vector2 = Vector2.ZERO
@@ -17,8 +23,11 @@ var is_moving: bool = false
 var is_rotating: bool = false
 var is_attacking: bool = false
 
+signal die
+
 func _ready() -> void:
     rot_dir.set_radius(self.global_position.y - rot_dir.global_position.y)
+    health_widget.set_health(health)
 
 func _physics_process(_delta: float) -> void:
     velocity.x = move_toward(velocity.x, 0.0, move_speed)
@@ -92,3 +101,16 @@ func get_rotation_angle(vA: Vector2, vB: Vector2, vC: Vector2) -> float:
     var vAB: Vector2 = vB - vA
     var vAC: Vector2 = vC - vA
     return vAB.angle_to(vAC)
+
+func add_health(n: int) -> void:
+    health += n
+    if health < 0:
+        die.emit()
+    else:
+        health = mini(health, max_health)
+
+    health_widget.set_health(health)
+
+func get_hit(dmg: int) -> void:
+    add_health(-dmg)
+    hurt_audio_player.play()
