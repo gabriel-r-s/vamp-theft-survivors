@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://h1nde6a6fvpg"]
+[gd_scene load_steps=13 format=3 uid="uid://h1nde6a6fvpg"]
 
 [ext_resource type="Texture2D" uid="uid://b0k8v2tca5hxt" path="res://icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dffoeh33g56im" path="res://scripts/player/player_controller.gd" id="1_g2els"]
@@ -11,13 +11,53 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("rot_dir", "hurt_audio_player")]
+[sub_resource type="Animation" id="Animation_smehm"]
+resource_name = "flash"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ur7pv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y4r1p"]
+_data = {
+&"RESET": SubResource("Animation_ur7pv"),
+&"flash": SubResource("Animation_smehm")
+}
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("rot_dir", "invuln_timer", "invuln_player", "hurt_audio_player")]
 collision_layer = 10
 script = ExtResource("1_g2els")
 rot_dir = NodePath("Direction")
 player_bullet_scene = ExtResource("2_qhqgy")
 damage = 6.0
-max_health = 12
+invuln_timer = NodePath("InvulnTimer")
+invuln_player = NodePath("InvulnFlasher")
+max_health = 20
 hurt_audio_player = NodePath("AudioStreamPlayer2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -51,3 +91,13 @@ script = ExtResource("5_qlg0r")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_smehm")
+
+[node name="InvulnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="InvulnFlasher" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_y4r1p")
+}
+
+[connection signal="timeout" from="InvulnTimer" to="." method="_on_invuln_timer_timeout"]

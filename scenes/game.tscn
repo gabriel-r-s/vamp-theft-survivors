@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://daeon1jcpynan"]
+[gd_scene load_steps=17 format=4 uid="uid://daeon1jcpynan"]
 
 [ext_resource type="PackedScene" uid="uid://ds7827a7vmvx4" path="res://scenes/gui/stars.tscn" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://h1nde6a6fvpg" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -6,6 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://cgfc1smtvblod" path="res://scenes/enemy/manager.tscn" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://ber8vtx1ah47e" path="res://scripts/hordes.gd" id="3_lnu2h"]
 [ext_resource type="TileSet" uid="uid://b1hxlmce328ti" path="res://assets/tileset.tres" id="5_iywne"]
+[ext_resource type="AudioStream" uid="uid://bd3d670e5mm08" path="res://assets/ost/ost-0.ogg" id="7_kvuet"]
+[ext_resource type="AudioStream" uid="uid://bbrbxdt0u75bp" path="res://assets/ost/ost-1.ogg" id="8_trtic"]
+[ext_resource type="AudioStream" uid="uid://d110vfc7lriit" path="res://assets/ost/ost-2.ogg" id="9_ir15t"]
+[ext_resource type="AudioStream" uid="uid://dp2wa2x2grjej" path="res://assets/ost/ost-3.ogg" id="10_ca42v"]
+[ext_resource type="AudioStream" uid="uid://b48dt5erhqybr" path="res://assets/ost/ost-4.ogg" id="11_rysoc"]
+[ext_resource type="AudioStream" uid="uid://cch7q7m0u16y7" path="res://assets/ost/ost-5.ogg" id="12_ssvqc"]
+[ext_resource type="AudioStream" uid="uid://b8l86x2cplke0" path="res://assets/ost/ost-6.ogg" id="13_264po"]
+[ext_resource type="Script" uid="uid://dfcfvad04wvrk" path="res://scripts/music.gd" id="14_trtic"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_p57ef"]
 vertices = PackedVector2Array(-462.0625, -470.0703, 630, -477.92188, 630, -382, -462.67188, -382, 630, -350, 630, 678, 458, 178, 458, -18, 458, -30, 58, 274, 86, 286, -26, 286, -26, 274, 458, 594, 218, 678, 390, 594, 458, -162, -462.89063, -350, 390, -162, -182, 418, -182, 366, -278, 338, -442, 366, -346, 338, -26, 678, -469.9297, 678, -442, 418, 218, -2, 390, 398, 86, -2, 58, -2, -26, -2, -246, 66, -246, 14, -26, -162, -246, -110, -246, -162, -26, -30, -278, 254, -182, 242, -442, 242, -346, 254, 390, -18, 390, -30, 218, -30, 218, -162, 84, -162, 84, -94, 60, -94, 60, -162, -378, -162, 58, -30, 58, -94, 86, -94, 86, -30, 390, 178, -442, 190, -378, -110, -182, 190, -378, 66, 458, 398, 458, 386, 390, 386, 390, 190, 458, 190, -378, 14)
@@ -14,6 +22,80 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-472, -480, 640, -488, 
 sample_partition_type = 1
 source_geometry_mode = 1
 source_geometry_group_name = &"nav_group"
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_1kice"]
+clip_count = 7
+clip_0/name = &"s0"
+clip_0/stream = ExtResource("7_kvuet")
+clip_0/auto_advance = 0
+clip_1/name = &"s1"
+clip_1/stream = ExtResource("8_trtic")
+clip_1/auto_advance = 0
+clip_2/name = &"s2"
+clip_2/stream = ExtResource("9_ir15t")
+clip_2/auto_advance = 0
+clip_3/name = &"s3"
+clip_3/stream = ExtResource("10_ca42v")
+clip_3/auto_advance = 0
+clip_4/name = &"s4"
+clip_4/stream = ExtResource("11_rysoc")
+clip_4/auto_advance = 0
+clip_5/name = &"s5"
+clip_5/stream = ExtResource("12_ssvqc")
+clip_5/auto_advance = 0
+clip_6/name = &"s6"
+clip_6/stream = ExtResource("13_264po")
+clip_6/auto_advance = 0
+_transitions = {
+Vector2i(-1, 0): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 3,
+"to_time": 1
+},
+Vector2i(0, 1): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 3,
+"to_time": 1
+},
+Vector2i(1, 2): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 3,
+"to_time": 1
+},
+Vector2i(2, 3): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 3,
+"to_time": 1
+},
+Vector2i(3, 4): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 3,
+"to_time": 1
+},
+Vector2i(4, 5): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 3,
+"to_time": 1
+},
+Vector2i(5, 6): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 3,
+"to_time": 1
+},
+Vector2i(6, -1): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 3,
+"to_time": 1
+}
+}
 
 [node name="Game" type="Node"]
 
@@ -116,9 +198,10 @@ position = Vector2(-216, 312)
 [node name="Marker2D23" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(-208, 32)
 
-[node name="Hordes" type="Node" parent="." node_paths=PackedStringArray("stars")]
+[node name="Hordes" type="Node" parent="." node_paths=PackedStringArray("stars", "player")]
 script = ExtResource("3_lnu2h")
 stars = NodePath("../EnemyManager/Stars")
+player = NodePath("../Player")
 
 [node name="BgLayer" type="TileMapLayer" parent="." groups=["nav_group"]]
 visibility_layer = 2
@@ -131,11 +214,18 @@ tile_set = ExtResource("5_iywne")
 scroll_scale = Vector2(1.05, 1.05)
 
 [node name="TopLayer" type="TileMapLayer" parent="Parallax2D"]
+z_index = 285
 tile_map_data = PackedByteArray("AAAJACkAAAAFAA0AAAAJACgAAAAFAA8AAAAJACcAAAAFAA8AAAAJACYAAAAFAA8AAAAJACUAAAAFAA8AAAAJACQAAAAFAAwAAAAJACIAAAAFAA4AAAAJACAAAAAFAA0AAAAJAB8AAAAFAA8AAAAJABwAAAAFAA8AAAAJAB0AAAAFAA8AAAAJAB4AAAAFAA8AAAAJABsAAAAFAA8AAAAJABkAAAAFAA4AAAAJABcAAAAFAA8AAAAHABYAAAAFAA4AAAAGABYAAAAFAA4AAAAFABYAAAAFAA4AAAAEABYAAAAFAA4AAAADABYAAAAFAA4AAAACABYAAAAEAAwAAAAIACkAAAAFAA4AAAAHACkAAAAFAA4AAAAGACkAAAAEAA0AAAAIACQAAAAFAA4AAAAHACQAAAAFAA4AAAAGACQAAAAFAA4AAAAFACQAAAAFAA4AAAAKABkAAAAFAA4AAAALABkAAAAFAA4AAAAMABkAAAAFAA4AAAANABkAAAAFAA4AAAAOABkAAAAFAA4AAAAPABkAAAAFAA4AAAAQABkAAAAFAA4AAAARABkAAAAFAA4AAAASABkAAAAFAA4AAAATABkAAAAFAA4AAAAUABkAAAAFAA4AAAAVABkAAAAFAA4AAAAWABkAAAAFAA4AAAAXABkAAAAFAA4AAAAYABkAAAAFAA4AAAAZABkAAAAFAA4AAAAaABkAAAAFAA4AAAAbABkAAAAFAA4AAAAcABkAAAAFAA4AAAAdABkAAAAFAA4AAAAeABkAAAAFAA4AAAAfABkAAAAFAA4AAAAgABkAAAAFAA4AAAAhABkAAAAFAA4AAAAiABkAAAAFAA4AAAAjABkAAAAFAA4AAAAkABkAAAAFAA4AAAAlABkAAAAFAA4AAAAKACIAAAAFAA4AAAALACIAAAAFAA4AAAAMACIAAAAFAA4AAAAOACIAAAAFAA4AAAANACIAAAAFAA4AAAAPACIAAAAFAA4AAAAQACIAAAAFAA4AAAARACIAAAAFAA4AAAASACIAAAAFAA4AAAATACIAAAAFAA4AAAAUACIAAAAFAA4AAAAVACIAAAAFAA4AAAAWACIAAAAFAA4AAAAXACIAAAAFAA4AAAAYACIAAAAFAA4AAAAZACIAAAAFAA4AAAAaACIAAAAFAA4AAAAbACIAAAAFAA4AAAAcACIAAAAFAA4AAAAdACIAAAAFAA4AAAAeACIAAAAFAA4AAAAfACIAAAAFAA4AAAAgACIAAAAFAA4AAAAhACIAAAAFAA4AAAAiACIAAAAFAA4AAAAjACIAAAAFAA4AAAAkACIAAAAFAA4AAAAlACIAAAAFAA4AAAAIABkAAAAFAA4AAAAHABkAAAAFAA4AAAAGABkAAAAFAA4AAAAFABkAAAAFAA4AAAAEABkAAAAFAA4AAAADABkAAAAFAA4AAAACABkAAAAFAA4AAAABABkAAAAFAA4AAAAAABkAAAAFAA4AAAD//xkAAAAFAA4AAAD+/xkAAAAFAA4AAAD9/xkAAAAFAA4AAAD8/xkAAAAFAA4AAAD7/xkAAAAFAA4AAAD6/xkAAAAFAA4AAAD5/xkAAAAFAA4AAAD4/xkAAAAFAA4AAAAJABoAAAAFAA8AAAAJABgAAAAFAA8AAAAmABkAAAAFAA4AAAAnABkAAAAFAA4AAAAoABkAAAAFAA0AAAAmACIAAAAFAA4AAAAnACIAAAAFAA4AAAAoACIAAAAFAA0AAAAIABYAAAAFAA4AAAAJABYAAAAFAAwAAAAIACIAAAAFAA4AAAAGACIAAAAFAA4AAAAFACIAAAAFAA4AAAADACIAAAAFAA4AAAACACIAAAAFAA4AAAAHACIAAAAFAA4AAAAEACIAAAAFAA4AAADj/+r/AAAAAAEAAADk/+r/AAABAAEAAAD3/xkAAAAFAA4AAAD2/xkAAAAFAA4AAAD1/xkAAAAFAA4AAAD0/xkAAAAFAA4AAADz/xkAAAAFAA4AAADy/xkAAAAFAA4AAADx/xkAAAAFAA4AAADw/xkAAAAFAA4AAADv/xkAAAAFAA4AAADu/xkAAAAFAA4AAADt/xkAAAAFAA4AAADs/xkAAAAFAA4AAADr/xkAAAAFAA4AAADq/xkAAAAFAA4AAADp/xkAAAAFAA4AAADo/xkAAAAFAA4AAADn/xkAAAAFAA4AAADm/xkAAAAFAA4AAADl/xkAAAAFAA4AAADk/xkAAAAFAA4AAADj/xkAAAAFAA4AAADi/xkAAAAFAA4AAADh/xkAAAAFAA4AAADg/xkAAAAFAA4AAADf/xkAAAAEAA0AAAABACIAAAAEAAwAAAAEACQAAAAEAAwAAAA=")
 tile_set = ExtResource("5_iywne")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." groups=["nav_group"]]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_p57ef")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("stars")]
+stream = SubResource("AudioStreamInteractive_1kice")
+autoplay = true
+bus = &"Music"
+script = ExtResource("14_trtic")
+stars = NodePath("../EnemyManager/Stars")
 
 [editable path="EnemyManager"]

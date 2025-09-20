@@ -2,15 +2,19 @@ class_name Player
 extends CharacterBody2D
 
 @export var rot_dir: PlayerDirection
-@export var move_speed: float = 50.0
+@export var move_speed: float = 80.0
 @export var rot_speed: float = 10.0
 @export var player_bullet_scene: PackedScene
 @export var damage: float = 1.0
+@export var invuln_timer: Timer
+@export var invuln_player: AnimationPlayer
+
 @export var max_health := 6
 
 @export var health_widget: HealthWidget
 @export var hurt_audio_player: AudioStreamPlayer2D
 
+@onready var health_limit := max_health
 @onready var health := max_health
 
 var velocity_dir: Vector2 = Vector2.ZERO
@@ -23,6 +27,8 @@ var is_moving: bool = false
 var is_rotating: bool = false
 var is_attacking: bool = false
 
+var godmode := false
+
 signal die
 
 func _ready() -> void:
@@ -30,6 +36,9 @@ func _ready() -> void:
     health_widget.set_health(health)
 
 func _physics_process(_delta: float) -> void:
+    if Input.is_action_just_pressed("Godmode"):
+        godmode = not godmode
+    
     velocity.x = move_toward(velocity.x, 0.0, move_speed)
     velocity.y = move_toward(velocity.y, 0.0, move_speed)
     if is_rotating:
@@ -106,14 +115,36 @@ func get_rotation_angle(vA: Vector2, vB: Vector2, vC: Vector2) -> float:
     return vAB.angle_to(vAC)
 
 func add_health(n: int) -> void:
-    health += n
-    if health <= 0:
-        (func(): die.emit()).call_deferred()
+    if n > 0:
+        if health == max_health:
+            max_health += n
+            health = max_health
+        else:
+            health = mini(health + n, max_health)
     else:
-        health = mini(health, max_health)
+        if godmode:
+            return
+        if not invuln_timer.is_stopped():
+            return
+
+        health += n
+        if health <= 0:
+            (func(): die.emit()).call_deferred()
+        invuln_timer.start()
+        invuln_player.play("flash")
 
     health_widget.set_health(health)
+
+func reset_health() -> void:
+    health = max_health
+    health_widget.set_health(health)
+
 
 func get_hit(dmg: int) -> void:
     add_health(-dmg)
     hurt_audio_player.play()
+
+
+func _on_invuln_timer_timeout() -> void:
+    invuln_player.stop()
+    visible = true

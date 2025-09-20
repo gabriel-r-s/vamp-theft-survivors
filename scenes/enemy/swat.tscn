@@ -6,7 +6,7 @@
 
 [node name="Swat" instance=ExtResource("1_o4q5g")]
 health = 20.0
-health_drop_probability = 0.3
+health_drop_probability = 0.5
 max_speed = 50.0
 
 [node name="Gun" parent="." index="0"]

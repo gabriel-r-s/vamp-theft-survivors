@@ -37,6 +37,7 @@ debug_color = Color(0.13716355, 0.6274047, 0.45059532, 0.41960785)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_46jqs")
+bus = &"Guns"
 
 [connection signal="ready" from="." to="AudioStreamPlayer2D" method="play"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
